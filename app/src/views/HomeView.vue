@@ -2,9 +2,18 @@
 import { ref, onMounted } from 'vue'
 const childrenwithlead = ref('')
 async function getData() {
-  let result = await fetch('https://data.cityofnewyork.us/resource/tnry-kwh5.json')
-  let data = await result.json()
-  childrenwithlead.value = data
+  try {
+    const response = await fetch('https://data.cityofnewyork.us/resource/tnry-kwh5.json')
+    if (response.status != 200) {
+      throw new Error(response)
+    } else {
+      let data = await response.json()
+      childrenwithlead.value = data
+    }
+  } catch (error) {
+    console.log(error)
+    console.log('sorry coudlnt fid that')
+  }
 }
 
 onMounted(() => {
