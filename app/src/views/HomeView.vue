@@ -7,8 +7,6 @@ async function getData() {
   childrenwithlead.value = data
 }
 
-console.log(childrenwithlead)
-
 onMounted(() => {
   getData()
 })
@@ -19,7 +17,7 @@ onMounted(() => {
     <div v-for="item in childrenwithlead">
       <h2>
         {{ item.geo_area_name }} in the year {{ item.time_period }} had
-        {{ item.children_under_6_years_with }} kids with LEAD in their BLOOD
+        {{ item.children_under_6_years_with }} kids with LEAD in their BLOOD!
       </h2>
     </div>
   </main>
