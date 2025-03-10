@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import LeadData from '@/components/LeadData.vue'
+
 const childrenwithlead = ref('')
 async function getData() {
   try {
@@ -22,12 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <div v-for="item in childrenwithlead">
-      <h2>
-        {{ item.geo_area_name }} in the year {{ item.time_period }} had
-        {{ item.children_under_6_years_with }} kids with LEAD in their BLOOD!
-      </h2>
-    </div>
-  </main>
+  <div>
+    <LeadData v-for="item in items" :item="item" />
+  </div>
 </template>
