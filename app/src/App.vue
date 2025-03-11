@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="we;cpom" />
+      <HelloWorld msg="theres Lead in your Blood but probably not as much as these kids" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>

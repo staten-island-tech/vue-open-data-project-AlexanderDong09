@@ -25,6 +25,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <LeadData v-for="item in items" :item="item" />
+    <h2>Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)</h2>
+    <LeadData v-for="item in childrenwithlead" :item="item" />
   </div>
 </template>
