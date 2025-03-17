@@ -24,8 +24,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h2>Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)</h2>
-    <LeadData v-for="item in childrenwithlead" :item="item" />
+  <h1 class="text-3xl font-bold underline center">
+    Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
+  </h1>
+  <div class="flex flex-wrap gap-4 p-5">
+    <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
   </div>
 </template>
+
+<style scoped>
+h1 {
+  text-align: center;
+  padding: 1.5rem;
+  text-decoration: underline;
+}
+</style>
