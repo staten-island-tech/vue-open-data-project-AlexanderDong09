@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import LeadData from '@/components/LeadData.vue'
+import AreaSelect from '@/components/AreaSelect.vue'
 
 const childrenwithlead = ref('')
 async function getData() {
@@ -28,6 +29,7 @@ onMounted(() => {
     Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
   </h1>
   <div class="flex flex-wrap gap-4 p-5">
+    <AreaSelect />
     <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
   </div>
 </template>
