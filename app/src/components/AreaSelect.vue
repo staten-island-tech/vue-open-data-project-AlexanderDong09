@@ -1,33 +1,23 @@
 <template>
-  <div>
+  <div class="card flex justify-center">
     <Select
       v-model="selectedArea"
-      :options="childrenwithlead"
+      :options="item"
       filter
-      :optionLabel="childrenwithlead.geo_area_name"
-      placeholder="Select a Country"
+      placeholder="Select an area within NY"
+      class="w-full md:w-56"
     >
-      <template #value="slotProps">
-        <div v-if="slotProps.value" class="flex items-center">
-          <div>{{ slotProps.value.name }}</div>
-        </div>
-        <span v-else>
-          {{ slotProps.placeholder }}
-        </span>
-      </template>
-      <template #option="slotProps">
-        <div class="flex items-center">
-          <div>{{ slotProps.option.name }}</div>
-        </div>
-      </template></Select
-    >
+    </Select>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import LeadData from '@/components/LeadData.vue'
-import { childrenwithlead } from '@/views/HomeView.vue'
+import { Select } from 'primevue'
+// import LeadData from '@/components/LeadData.vue'
+const props = defineProps({
+  item: Object,
+})
 
 const selectedArea = ref()
 </script>

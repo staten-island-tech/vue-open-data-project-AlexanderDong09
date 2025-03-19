@@ -4,6 +4,8 @@ import LeadData from '@/components/LeadData.vue'
 import AreaSelect from '@/components/AreaSelect.vue'
 
 const childrenwithlead = ref('')
+const areaNames = ref([])
+
 async function getData() {
   try {
     const response = await fetch('https://data.cityofnewyork.us/resource/tnry-kwh5.json')
@@ -12,10 +14,12 @@ async function getData() {
     } else {
       let data = await response.json()
       childrenwithlead.value = data
+      childrenwithlead.geo_area_name = areaNames
     }
   } catch (error) {
     console.log(error)
     console.log('sorry coudlnt fid that')
+    console.log(areaNames)
   }
 }
 
@@ -28,8 +32,8 @@ onMounted(() => {
   <h1 class="text-3xl font-bold underline center">
     Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
   </h1>
+  <AreaSelect :item="areaNames" />
   <div class="flex flex-wrap gap-4 p-5">
-    <AreaSelect />
     <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
   </div>
 </template>
