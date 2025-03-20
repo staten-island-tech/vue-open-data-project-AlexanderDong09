@@ -14,11 +14,9 @@
 <script setup>
 import { ref } from 'vue'
 import { Select } from 'primevue'
-// import LeadData from '@/components/LeadData.vue'
 const props = defineProps({
   item: Object,
 })
-// areaNames = item.geo_area_name
 const selectedArea = ref()
 </script>
 

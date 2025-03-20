@@ -19,8 +19,8 @@ async function getData() {
 
       const areaNames = childrenwithlead.value.map((el) => el.geo_area_name)
       const areaNamesButUnique = new Set(areaNames)
-      uniqueAreaNames.value = [areaNamesButUnique]
-      // RAHGGGGGGGGGGGGGGGGhHHHHHHHHHHHHHHH
+      uniqueAreaNames.value = Array.from(areaNamesButUnique)
+      // RAHGGGGGGGGGGGGGGGGhHHHHHHHHHHHHHHH !!!!!!!!!!!!!!!!!!!!!!!!!
     }
   } catch (error) {
     console.log(error)
@@ -34,13 +34,15 @@ onMounted(() => {
 
 console.log(uniqueAreaNames)
 console.log(childrenwithlead)
+
+const selectedArea = ref()
 </script>
 
 <template>
   <h1 class="text-3xl font-bold underline center">
     Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
   </h1>
-  <AreaSelect :item="uniqueAreaNames" />
+  <AreaSelect :item="uniqueAreaNames" v-model="selectedArea" />
   <div class="flex flex-wrap gap-4 p-5">
     <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
   </div>
