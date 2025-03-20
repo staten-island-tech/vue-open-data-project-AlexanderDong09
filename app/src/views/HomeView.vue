@@ -5,6 +5,7 @@ import AreaSelect from '@/components/AreaSelect.vue'
 
 const childrenwithlead = ref('')
 const areaNames = ref([])
+const uniqueAreaNames = ref([])
 
 async function getData() {
   try {
@@ -14,25 +15,32 @@ async function getData() {
     } else {
       let data = await response.json()
       childrenwithlead.value = data
-      childrenwithlead.geo_area_name = areaNames
+      // console.log(childrenwithlead)
+
+      const areaNames = childrenwithlead.value.map((el) => el.geo_area_name)
+      const areaNamesButUnique = new Set(areaNames)
+      uniqueAreaNames.value = [areaNamesButUnique]
+      // RAHGGGGGGGGGGGGGGGGhHHHHHHHHHHHHHHH
     }
   } catch (error) {
     console.log(error)
     console.log('sorry coudlnt fid that')
-    console.log(areaNames)
   }
 }
 
 onMounted(() => {
   getData()
 })
+
+console.log(uniqueAreaNames)
+console.log(childrenwithlead)
 </script>
 
 <template>
   <h1 class="text-3xl font-bold underline center">
     Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
   </h1>
-  <AreaSelect :item="areaNames" />
+  <AreaSelect :item="uniqueAreaNames" />
   <div class="flex flex-wrap gap-4 p-5">
     <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
   </div>

@@ -18,7 +18,7 @@ import { Select } from 'primevue'
 const props = defineProps({
   item: Object,
 })
-
+// areaNames = item.geo_area_name
 const selectedArea = ref()
 </script>
 
