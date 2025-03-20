@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import LeadData from '@/components/LeadData.vue'
 import AreaSelect from '@/components/AreaSelect.vue'
 
@@ -35,7 +35,26 @@ onMounted(() => {
 console.log(uniqueAreaNames)
 console.log(childrenwithlead)
 
-const selectedArea = ref()
+import { selectedArea } from '@/components/selected'
+console.log(selectedArea)
+
+// childrenwithlead.value.forEach((el, index) => {
+//   if (el.geo_area_name !== selectedArea) {
+//     childrenwithlead.splice(index, 1)
+//   }
+// })
+
+const filteredItems = computed(() => {
+  let filtered = childrenwithlead.value
+  if (selectedArea.value === 'all' || !selectedArea.value) {
+    return childrenwithlead.value
+  } else {
+    filtered = filtered.filter((item) => item.geo_area_name === selectedArea.value)
+  }
+
+  return filtered.sort((a, b) => a.time_period - b.time_period)
+})
+computed(() => {})
 </script>
 
 <template>
@@ -44,7 +63,7 @@ const selectedArea = ref()
   </h1>
   <AreaSelect :item="uniqueAreaNames" v-model="selectedArea" />
   <div class="flex flex-wrap gap-4 p-5">
-    <LeadData class="container" v-for="item in childrenwithlead" :item="item" />
+    <LeadData class="container" v-for="item in filteredItems" :item="item" />
   </div>
 </template>
 
