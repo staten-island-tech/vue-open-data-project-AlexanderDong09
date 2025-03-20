@@ -15,7 +15,7 @@
 import { ref } from 'vue'
 import { Select } from 'primevue'
 const props = defineProps({
-  item: Object,
+  item: Array,
 })
 const selectedArea = ref()
 </script>
