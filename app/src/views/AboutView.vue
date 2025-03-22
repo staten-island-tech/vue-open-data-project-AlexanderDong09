@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-500">
+  <div class="">
     <DoughnutChart :data="[43, 45, 23, 54, 29]" />
   </div>
 </template>

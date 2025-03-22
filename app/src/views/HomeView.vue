@@ -1,11 +1,11 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import { selectedArea } from '@/components/selected'
 import LeadData from '@/components/LeadData.vue'
 import AreaSelect from '@/components/AreaSelect.vue'
 
-const childrenwithlead = ref('')
-const areaNames = ref([])
 const uniqueAreaNames = ref([])
+const childrenwithlead = ref('')
 
 async function getData() {
   try {
@@ -35,14 +35,9 @@ onMounted(() => {
 console.log(uniqueAreaNames)
 console.log(childrenwithlead)
 
-import { selectedArea } from '@/components/selected'
-console.log(selectedArea)
+import ResetButton from '@/components/ResetButton.vue'
 
-// childrenwithlead.value.forEach((el, index) => {
-//   if (el.geo_area_name !== selectedArea) {
-//     childrenwithlead.splice(index, 1)
-//   }
-// })
+console.log(selectedArea)
 
 const filteredItems = computed(() => {
   let filtered = childrenwithlead.value
@@ -52,16 +47,25 @@ const filteredItems = computed(() => {
     filtered = filtered.filter((item) => item.geo_area_name === selectedArea.value)
   }
 
-  return filtered.sort((a, b) => a.time_period - b.time_period)
+  return filtered.sort((a, b) => a.time_period - b.time_period) // wow would you look at that it sorts it in ascending year order wow
 })
-computed(() => {})
+
+function reset() {
+  // wow that works pretty well actually
+  selectedArea.value = 'all'
+  return childrenwithlead.value
+}
 </script>
 
 <template>
   <h1 class="text-3xl font-bold underline center">
     Children 6 or under with greater than 5 micrograms of lead per decaliter (0.1L)
   </h1>
-  <AreaSelect :item="uniqueAreaNames" v-model="selectedArea" />
+  <div class="flex flex-wrap justify-center">
+    <AreaSelect :item="uniqueAreaNames" v-model="selectedArea" />
+    <ResetButton @click="reset" />
+  </div>
+
   <div class="flex flex-wrap gap-4 p-5">
     <LeadData class="container" v-for="item in filteredItems" :item="item" />
   </div>
