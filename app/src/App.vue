@@ -1,10 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
+      <HelloWorld msg="theres Lead in your Blood but probably not as much as these kids" />
+
       <nav>
         <RouterLink to="/">cards</RouterLink>
         <RouterLink to="/homeviewbutwithachartnow"

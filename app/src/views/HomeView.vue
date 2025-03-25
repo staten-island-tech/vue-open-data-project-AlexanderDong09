@@ -1,11 +1,12 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { selectedArea } from '@/components/selected'
 import LeadData from '@/components/LeadData.vue'
 import AreaSelect from '@/components/AreaSelect.vue'
+import ResetButton from '@/components/ResetButton.vue'
 
 const uniqueAreaNames = ref([])
 const childrenwithlead = ref('')
+const selectedArea = ref('all')
 
 async function getData() {
   try {
@@ -34,13 +35,9 @@ onMounted(() => {
 
 console.log(uniqueAreaNames)
 console.log(childrenwithlead)
-
-import ResetButton from '@/components/ResetButton.vue'
-
 console.log(selectedArea)
 
 const filteredItems = computed(() => {
-  let filtered = childrenwithlead.value
   if (selectedArea.value === 'all' || !selectedArea.value) {
     return childrenwithlead.value
   } else {
