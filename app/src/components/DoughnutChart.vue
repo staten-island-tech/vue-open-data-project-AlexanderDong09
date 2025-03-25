@@ -13,28 +13,32 @@ const props = defineProps({
   childrenwithlead: Array,
 })
 
-const chartData = computed(() => ({
-  labels: props.childrenwithlead.map((item) => `${item.geo_area_name} - ${item.time_period}`),
-  datasets: [
-    {
-      data: props.childrenwithlead.map((item) => item.children_under_6_years_with),
-      backgroundColor: [
-        'rgb(255, 99, 20)',
-        'rgb(54, 40, 100)',
-        'rgb(255, 205, 86)',
-        'rgb(46, 205, 86)',
-        'rgb(76, 205, 255)',
-      ],
-      datalabels: {
-        formatter: (value) => `${value} kids with lead`,
-        color: '#fff',
-        font: {
-          weight: 'bold',
+const chartData = computed(() => {
+  if (!props.childrenwithlead || props.childrenwithlead.length === 0) {
+    return { labels: [], datasets: [] }
+  }
+
+  return {
+    labels: props.childrenwithlead.map((item) => `${item.geo_area_name} - ${item.time_period}`),
+    datasets: [
+      {
+        data: props.childrenwithlead.map((item) => item.children_under_6_years_with),
+        backgroundColor: [
+          'rgb(255, 99, 20)',
+          'rgb(54, 40, 100)',
+          'rgb(255, 205, 86)',
+          'rgb(46, 205, 86)',
+          'rgb(76, 205, 255)',
+        ],
+        datalabels: {
+          formatter: (value) => `${value} kids with lead`,
+          color: '#fff',
+          font: { weight: 'bold' },
         },
       },
-    },
-  ],
-}))
+    ],
+  }
+})
 
 const chartOptions = {
   responsive: true,

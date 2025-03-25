@@ -10,7 +10,11 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/homeviewbutwithachartnow"
+          >come one come all take a gander at this donut chart that wonderfully displays the exact
+          same data as the homepage
+        </RouterLink>
+        <RouterLink to="/leadlevelsfilter">even more data to gander at </RouterLink>
       </nav>
     </div>
   </header>

@@ -4,7 +4,6 @@
       label="reset"
       icon="pi pi-refresh"
       iconPos="right"
-      v-model="selectedArea"
       class="w-full md:w-24 p-3 m-3"
     ></Button>
   </div>
