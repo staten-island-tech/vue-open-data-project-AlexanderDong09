@@ -67,7 +67,7 @@ function reset() {
   </div>
 
   <div class="flex flex-wrap gap-4 p-5">
-    <LeadData class="container" v-for="item in filteredItems" :item="item" />
+    <LeadData class="container" v-for="item in filteredItems" :item="item" :key="item" />
   </div>
 </template>
 

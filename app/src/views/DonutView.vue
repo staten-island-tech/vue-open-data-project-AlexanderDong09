@@ -6,7 +6,7 @@
   <h4 class="flex justify-center">↓ you probably want to use this ↓</h4>
 
   <div class="flex flex-wrap justify-center">
-    <PieAreaSelect :item="uniqueAreaNames" v-model="pieselectedArea" />
+    <PieAreaSelect :item="PieUniqueAreaNames" v-model="pieselectedArea" />
     <ResetButton @click="reset" />
   </div>
 
@@ -21,7 +21,7 @@ import PieAreaSelect from '@/components/PieAreaSelect.vue'
 import DoughnutChart from '@/components/DoughnutChart.vue'
 import ResetButton from '@/components/ResetButton.vue'
 
-const uniqueAreaNames = ref([])
+const PieUniqueAreaNames = ref([])
 const childrenwithlead = ref([])
 
 async function getData() {
@@ -33,7 +33,7 @@ async function getData() {
     childrenwithlead.value = data
 
     const areaNames = new Set(data.map((el) => el.geo_area_name))
-    uniqueAreaNames.value = Array.from(areaNames)
+    PieUniqueAreaNames.value = Array.from(areaNames)
   } catch (error) {
     console.error('Error fetching data:', error)
   }

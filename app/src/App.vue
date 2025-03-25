@@ -1,20 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="theres Lead in your Blood but probably not as much as these kids" />
-
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">cards</RouterLink>
         <RouterLink to="/homeviewbutwithachartnow"
           >come one come all take a gander at this donut chart that wonderfully displays the exact
           same data as the homepage
         </RouterLink>
-        <RouterLink to="/leadlevelsfilter">even more data to gander at </RouterLink>
+        <RouterLink to="/leadlevelsfilter"
+          >want lead? we got lead. we got so much lead. unhealthy levels of lead, even.</RouterLink
+        >
       </nav>
     </div>
   </header>
