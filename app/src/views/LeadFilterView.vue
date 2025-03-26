@@ -11,7 +11,9 @@
 
   <!-- Chart and Table -->
   <div class="flex flex-wrap justify-center gap-8 mt-5">
+    <LeadBarChart :filteredData="filteredItems" />
     <LeadExposureChart :filteredData="filteredItems" />
+
     <LeadExposureTable :filteredData="filteredItems" />
   </div>
 </template>
@@ -21,6 +23,7 @@ import { ref, computed, onMounted } from 'vue'
 import LeadFilterControls from '@/components/LeadFilterControls.vue'
 import LeadExposureChart from '@/components/LeadExposureChart.vue'
 import LeadExposureTable from '@/components/LeadExposureTable.vue'
+import LeadBarChart from '@/components/LeadBarChart.vue'
 
 const selectedArea = ref(null)
 const selectedTime = ref(null)
