@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'leadlevelsfilter',
       component: () => import('@/views/LeadFilterView.vue'),
     },
+    {
+      path: '/obligatoryspacebackgroundimagethatsbeeninthepastlike6projects',
+      name: 'obligatoryspacebackgroundimagethatsbeeninthepastlike6projects',
+      component: () => import('@/views/AViewOfSorts.vue'),
+    },
   ],
 })
 

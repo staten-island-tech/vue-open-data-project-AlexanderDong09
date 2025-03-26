@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <h1 class="text-3xl font-bold text-center my-5">Lead Exposure Data by Area and Time Period</h1>
+  <h1 class="text-3xl font-bold text-center">Lead Exposure Data by Area and Time Period</h1>
+  <h4 class="flex justify-center">↓ you DEFINITELY want to use these ↓</h4>
+  <!-- Filter Controls -->
+  <LeadFilterControls
+    :areas="uniqueAreaNames"
+    :timePeriods="uniqueTimePeriods"
+    v-model:selected-area="selectedArea"
+    v-model:selected-time="selectedTime"
+  />
 
-    <!-- Filter Controls -->
-    <LeadFilterControls
-      :areas="uniqueAreaNames"
-      :timePeriods="uniqueTimePeriods"
-      v-model:selected-area="selectedArea"
-      v-model:selected-time="selectedTime"
-    />
-
-    <!-- Chart and Table -->
-    <div class="flex flex-wrap justify-center gap-8 mt-5">
-      <LeadExposureChart :filteredData="filteredItems" />
-      <LeadExposureTable :filteredData="filteredItems" />
-    </div>
+  <!-- Chart and Table -->
+  <div class="flex flex-wrap justify-center gap-8 mt-5">
+    <LeadExposureChart :filteredData="filteredItems" />
+    <LeadExposureTable :filteredData="filteredItems" />
   </div>
 </template>
 

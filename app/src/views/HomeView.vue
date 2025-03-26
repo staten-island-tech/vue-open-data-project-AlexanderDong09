@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import LeadData from '@/components/LeadData.vue'
 import AreaSelect from '@/components/AreaSelect.vue'
 import ResetButton from '@/components/ResetButton.vue'
+import { selectedArea } from '@/components/selected'
 
 const uniqueAreaNames = ref([])
 const childrenwithlead = ref('')
-const selectedArea = ref('all')
 
 async function getData() {
   try {
@@ -33,11 +33,8 @@ onMounted(() => {
   getData()
 })
 
-console.log(uniqueAreaNames)
-console.log(childrenwithlead)
-console.log(selectedArea)
-
 const filteredItems = computed(() => {
+  let filtered = childrenwithlead.value
   if (selectedArea.value === 'all' || !selectedArea.value) {
     return childrenwithlead.value
   } else {
@@ -52,6 +49,10 @@ function reset() {
   selectedArea.value = 'all'
   return childrenwithlead.value
 }
+
+onBeforeUnmount(() => {
+  selectedArea.value = 'all' //  code breaks without this when you select something in this view, go to a new view, then go back. dont know why the hell that happens, it doesn't when youre in the donutview, but this is a quick albeit lazy fix. no saved selected area for your cards :(
+})
 </script>
 
 <template>

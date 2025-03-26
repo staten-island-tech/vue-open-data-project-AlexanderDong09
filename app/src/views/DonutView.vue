@@ -10,7 +10,6 @@
     <ResetButton @click="reset" />
   </div>
 
-  <!-- Chart now takes filtered data -->
   <DoughnutChart :childrenwithlead="filteredItems" />
 </template>
 

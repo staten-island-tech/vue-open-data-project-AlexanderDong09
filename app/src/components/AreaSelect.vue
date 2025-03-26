@@ -12,7 +12,8 @@
 </template>
 
 <script setup>
-import { selectedArea } from './selected'
+import { selectedArea } from '@/components/selected'
+
 import { Select } from 'primevue'
 const props = defineProps({
   item: Array,

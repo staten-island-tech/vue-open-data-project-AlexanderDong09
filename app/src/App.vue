@@ -9,14 +9,21 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="theres Lead in your Blood but probably not as much as these kids" />
 
       <nav>
-        <RouterLink to="/">cards</RouterLink>
+        <RouterLink to="/"
+          >deck of cards except its not at all a deck of cards (its about like 576 cards that show
+          elevated blood lead levels in children 6 and under)</RouterLink
+        >
         <RouterLink to="/homeviewbutwithachartnow"
           >come one come all take a gander at this donut chart that wonderfully displays the exact
           same data as the homepage
         </RouterLink>
         <RouterLink to="/leadlevelsfilter"
-          >want lead? we got lead. we got so much lead. unhealthy levels of lead, even.</RouterLink
+          >want lead? we got lead. we got so much lead. unhealthy levels of lead, even. featuring
+          data with a special guest appearance of even more data.</RouterLink
         >
+        <RouterLink to="/obligatoryspacebackgroundimagethatsbeeninthepastlike6projects"
+          >⠀
+        </RouterLink>
       </nav>
     </div>
   </header>
